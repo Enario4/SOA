@@ -1,9 +1,0 @@
-package fr.insa.soap;
-
-public class StreetProject {
-	
-	public String sayHello(String chaine) {
-		return "Hello" + chaine;
-	}
-
-}
