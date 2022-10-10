@@ -1,0 +1,18 @@
+package fr.insa.soap;
+
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebService;
+
+@WebService(serviceName="lastreet")
+public class StreetProject {
+	
+	public String sayHello(String chaine) {
+		return "Hello" + chaine;
+	}
+	
+	public int getAge(int annee) {
+		return annee-2017;
+	}
+
+}

@@ -1,0 +1,23 @@
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-10 14:08:19.625
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2022-10-10 14:08:19.627
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2022-10-10 14:08:19.627
+!MESSAGE Could not write workspace metadata '/home/oberry/5A/SOA/SOA/AnalyseProject/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree'.
+!STACK 0
+java.io.FileNotFoundException: /home/oberry/5A/SOA/SOA/AnalyseProject/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree (Aucun fichier ou dossier de ce type)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(SafeFileOutputStream.java:55)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1381)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1168)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2354)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:554)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-10-10 14:08:20.483
+!MESSAGE The workspace will exit with unsaved changes in this session.
