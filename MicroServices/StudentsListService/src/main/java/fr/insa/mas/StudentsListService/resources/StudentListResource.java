@@ -3,6 +3,7 @@ package fr.insa.mas.StudentsListService.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,6 +12,9 @@ import fr.insa.mas.StudentsListService.model.*;
 @RestController
 @RequestMapping("/students")
 public class StudentListResource {
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	@GetMapping("ids/{idSpeciality}")
 	public StudentIDList getIDStudents(@PathVariable("idSpeciality") String speciality) {
@@ -37,18 +41,18 @@ public class StudentListResource {
 		students.addStudentToList(3);
 		
 		//Instanciate RestTemplate for Rest calls
-		RestTemplate restTemplate = new RestTemplate();
+		//RestTemplate restTemplate = new RestTemplate();
 		int i = 0;
 		List<Student> listStudents = new ArrayList<Student>();
 		
 		while(i < students.getStudentList().size()) {
 			//Call the MS to get students' information.
 			//The result is deserialized into StudentInfos java object
-			StudentInfos etudInfos = restTemplate.getForObject("http://localhost:8082/student/"+i, StudentInfos.class);
+			StudentInfos etudInfos = restTemplate.getForObject("http://studentInfoService/student/"+i, StudentInfos.class);
 			
 			//Call the MS to get students' evaluation.
 			//The result is deserialized into Evaluation java object
-			Evaluation eval = restTemplate.getForObject("http://localhost:8083/evaluation/" + i, Evaluation.class);
+			Evaluation eval = restTemplate.getForObject("http://studentEvalService/evaluation/" + i, Evaluation.class);
 			listStudents.add(new Student(i, etudInfos.getFirstName(),etudInfos.getLastName(),eval.getAverage()));
 			i++;
 		}
